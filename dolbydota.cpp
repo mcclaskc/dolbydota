@@ -16,7 +16,22 @@ DADA_CHATID CID;
 
 void printStatus(DADA_STATUS status);
 void move(DADA_CHATID cid);
-DADA_CHATID selectChat(string name);
+DADA_CHATID selectChat();
+void initialize();
+
+int main()
+{
+	initialize();
+	CID = selectChat();
+	while(true)
+	{
+		//logic to check if in a chat
+		move(CID);
+		Sleep(500);
+	}
+	DADA_Destroy(D);
+    return 0;
+}
 
 void initialize()
 {
@@ -31,23 +46,6 @@ void initialize()
 			PS = DS;
 		}
 	} while (DS != DADA_STATUS_NORMAL);
-	string name;
-	cout << "Type the name of the chat: ";
-	cin >> name;
-	CID = selectChat(name);
-	
-}
-
-int main()
-{
-	initialize();
-	while(true)
-	{
-		move(CID);
-		Sleep(500);
-	}
-	DADA_Destroy(D);
-    return 0;
 }
 
 
@@ -81,15 +79,16 @@ DADA_CHATID selectChat(string name)
 {
 	DADA_CHATS chats;
 	DADA_GetChats(D, &chats);
+	DADA_CHATINFO chat_info;
 	for (size_t i = 0; i < chats.ids_len; ++i)
 	{
-		DADA_CHATINFO chat_info;
 		DADA_GetChatInfo(D, chats.ids[i], &chat_info);
-		if (chat_info.title == name) 
-		{
-			cout << chat_info.title << endl;
-			DADA_JoinChat(D, chats.ids[i]);
-			return chat_info.id;
-		}
+		cout << i << ":  " << chat_info.title << endl;
 	}
+	int id;
+	cout << "type the id number of the chat you wish to join: ";
+	cin >> id;
+	DADA_JoinChat(D, chats.ids[id]);
+	DADA_GetChatInfo(D, chats.ids[id], &chat_info);
+	return chat_info.id;
 }
