@@ -1,4 +1,4 @@
-﻿Build started 3/5/2013 3:00:02 PM.
+﻿Build started 3/5/2013 4:17:57 PM.
      1>Project "C:\Users\ChrisM\documents\visual studio 2010\Projects\dolbydota\dolbydota\dolbydota.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\dolbydota.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -18,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.31
+Time Elapsed 00:00:01.33

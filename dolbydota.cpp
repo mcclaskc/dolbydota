@@ -39,6 +39,7 @@ void initialize()
 {
 	DADA_GetStatus(D, &DS);
 	DADA_STATUS PS = DS;
+	printStatus(DS);
 	do
 	{
 		DADA_GetStatus(D, &DS);
